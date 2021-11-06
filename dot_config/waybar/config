@@ -1,0 +1,153 @@
+[{
+    "layer": "bottom",
+    "position": "top", 
+    "height": 24, 
+    "modules-left": ["sway/window", "sway/mode"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["clock"],
+    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+	    "4": "",
+             "5": "",
+	    "6": "",
+	    "10": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+
+    "clock": {
+    	"format": "{:%j  %d %b %Y %a, %I:%M %p}",
+	"tooltip": true,
+	"timezones": ["Asia/Kolkata", "America/New_York"]
+	},
+
+    "wlr/taskbar": {
+		"all-outputs": true,
+		"format": "{icon} {title:.15} ",
+        "icon-theme": "Papirus-Dark",
+		"icon-size": 16,
+		"on-click": "activate",
+		"on-middle-click": "close",
+		"on-right-click": "minimize"
+	}
+},
+
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 24,
+    "modules-left": ["custom/media"],
+    "modules-right": ["network#speed", "network", "pulseaudio", "cpu", "memory", "temperature", "battery", "tray"],
+    "module-center": [],
+
+
+    "custom/media": {
+    "format": "{icon}{}",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " ",
+    },
+
+    "max-length":70,
+    "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+
+    "on-click": "playerctl play-pause",
+  },
+
+
+    "pulseaudio": {
+        // "scroll-step": 5, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+
+    "network#speed": {
+        "format-wifi": "<span foreground='#929292'></span> {bandwidthDownBits} <span foreground='#929292'></span> {bandwidthUpBits}",
+        "format-ethernet": "<span foreground='#929292'></span> {bandwidthDownBits} <span foreground='#929292'></span> {bandwidthUpBits}",
+        "interval": 1
+    },
+  
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 50,
+            "critical": 30
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+    "tray":{
+        "icon-size": 21,
+        "spacing": 10
+    }
+}]
