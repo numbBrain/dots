@@ -64,6 +64,7 @@
 #network,
 #pulseaudio,
 #temperature,
+#custom-vpn,
 #tray {
     padding-left: 4px;
     padding-right: 4px;
@@ -151,10 +152,6 @@
 
 #pulseaudio.muted {
     /* No styles */
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
 }
 
 #temperature {

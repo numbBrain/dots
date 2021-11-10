@@ -50,7 +50,7 @@
     "position": "bottom",
     "height": 24,
     "modules-left": ["custom/media"],
-    "modules-right": ["network#speed", "network", "pulseaudio", "cpu", "memory", "temperature", "battery", "tray"],
+    "modules-right": ["network#speed", "custom/vpn", "network", "pulseaudio", "cpu", "memory", "temperature", "battery", "tray"],
     "module-center": [],
 
 
@@ -70,7 +70,7 @@
 
 
     "pulseaudio": {
-        // "scroll-step": 5, // %, can be a float
+        "scroll-step": 4, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -145,6 +145,14 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+
+	"custom/vpn":{
+			"exec": "$HOME/workspace/scripts/waybar_vpn.sh",
+			"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+			"return-type": "json",
+			"interval": 5,
+			"format": "{} " 
+		},
     
     "tray":{
         "icon-size": 21,

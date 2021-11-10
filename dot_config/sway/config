@@ -206,6 +206,7 @@ default_border pixel 2
 exec_always {
 		gsettings set org.gnome.desktop.interface gtk-theme "Arc-Blackest"
 		gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+		gsettings set org.gnome.desktop.privacy remember-recent-files false
         }
 
 ### Bindings
@@ -220,10 +221,22 @@ bindsym --locked XF86AudioMute exec pamixer -t
 bindsym --locked XF86AudioLowerVolume exec pamixer -d 4
 bindsym --locked XF86AudioRaiseVolume exec pamixer -i 4
 
-exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1  
+#polkit agent
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1  
 
 # move workspace to output
 bindsym $mod+Control+Shift+l move workspace to output right
 bindsym $mod+Control+Shift+h move workspace to output left
 bindsym $mod+Control+Shift+j move workspace to output down
 bindsym $mod+Control+Shift+k move workspace to output up
+
+#trackpad gestures
+exec libinput-gestures
+
+#notification daemon
+exec mako
+
+#screemshoting
+bindsym Print exec flameshot gui
+bindsym $mod+Print exec flameshot screen
+bindsym $mod+Shift+Print exec flameshot full
