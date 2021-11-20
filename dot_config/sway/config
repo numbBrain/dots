@@ -240,3 +240,6 @@ exec mako
 bindsym Print exec flameshot gui
 bindsym $mod+Print exec flameshot screen
 bindsym $mod+Shift+Print exec flameshot full
+
+#disable xwayland
+xwayland disable
