@@ -2,6 +2,8 @@ vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_refresh_wait = 100
 vim.g.nvim_tree_add_trailing = 1
+vim.g.nvim_tree_quit_on_open = 1
+nvim_tree_quit_on_open = 1
 
 return require('packer').startup(function()
 
@@ -14,7 +16,8 @@ return require('packer').startup(function()
         config = function() require'nvim-tree'.setup {
             auto_close = true,
             open_on_tab = true,
-            open_on_setup = true
+            open_on_setup = true,
+			update_cwd = true
 
             } end
     }
