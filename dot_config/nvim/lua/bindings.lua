@@ -3,8 +3,9 @@ mapper = vim.api.nvim_set_keymap
 
 mapper("n", "<Space>", "<NOP>", {noremap = true, silent = true})
 
---nvim-tree
-mapper("n", "<C-e>", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
+--tab movements
+mapper("n", "<C-n>", "gt", {silent = true})
+mapper("n", "<C-p>", "gT", {silent = true})
 
 --pane movements
 mapper("n", "<C-h>", "<C-w>h", {silent = true})
@@ -15,3 +16,6 @@ mapper("n", "<C-l>", "<C-w>l", {silent = true})
 --better indentation
 mapper("v", "<", "<gv", {noremap = true, silent = true})
 mapper("v", ">", ">gv", {noremap = true, silent = true})
+
+--nvim-tree
+mapper("n", "<Leader>e", ":NvimTreeToggle<CR>", {noremap = true, silent = true})
