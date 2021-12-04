@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
 		vim.fn.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
 	end
 
-	map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
+	buf_mapper('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+	buf_mapper('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
 end
 
 for _, lsp in ipairs(servers) do
